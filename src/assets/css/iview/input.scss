@@ -1,0 +1,53 @@
+/******** 条件输入框 ********/
+.app-input-condition {
+  .ivu-input {
+    background: rgba(7, 46, 89, 0.52);
+    border: 1px solid rgba(0, 255, 255, 0.3);
+    border-radius: 0;
+    font-size: 14px;
+    color: #ffffff;
+    padding: 5px 8px;
+    height: 34px;
+    line-height: 34px;
+    &::placeholder {
+      color: rgba(254, 254, 254, .5);
+    }
+    &:hover,
+    &:focus {
+      border: 1px solid #00ffff;
+      box-shadow: none;
+    }
+  }
+  .ivu-input-icon-clear {
+    color: rgba(255, 255, 255, .8);
+    cursor: pointer;
+    &:before {
+      content: '\F378';
+    }
+    &:hover {
+      color: #ffffff;
+    }
+  }
+}
+
+/******** 日期时间输入框 ********/
+.app-input-date {
+  .ivu-input {
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    padding: 0 4px;
+    font-size: 14px;
+    color: #ffffff;
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+    &::placeholder {
+      color: rgba(254, 254, 254, .5);
+    }
+    &:hover,
+    &:focus {
+      box-shadow: none;
+    }
+  }
+}

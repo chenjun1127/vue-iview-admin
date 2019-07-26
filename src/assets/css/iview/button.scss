@@ -1,0 +1,69 @@
+/******** 普通按钮 ********/
+.app-button-normal {
+  padding: 0 15px;
+  height: 34px;
+  color: #ffffff;
+  font-size: 14px;
+  background: rgba(30, 103, 167, 0.9);
+  border: none;
+  border-radius: 2px;
+  &.ivu-btn > span {
+    vertical-align: baseline;
+  }
+  &:hover, &:focus {
+    background: rgba(17, 211, 252, 0.9);
+    color: #ffffff;
+    border: none;
+    box-shadow: none;
+  }
+}
+
+/******** 图标按钮 ********/
+.app-button-icon {
+  width: 34px;
+  height: 34px;
+  text-align: center;
+  padding: 0;
+  color: #ffffff;
+  font-size: 14px;
+  background: rgba(30, 103, 167, 0.9);
+  border: none;
+  border-radius: 2px;
+  &.ivu-btn > span {
+    vertical-align: baseline;
+  }
+  &:hover, &:focus {
+    background: rgba(17, 211, 252, 0.9);
+    color: #ffffff;
+    border: none;
+    box-shadow: none;
+  }
+}
+
+/******** 切换按钮 ********/
+.app-button-change {
+  width: 34px;
+  height: 34px;
+  text-align: center;
+  padding: 0;
+  color: #ffffff;
+  font-size: 14px;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 2px;
+  &.ivu-btn > span {
+    vertical-align: baseline;
+  }
+  &.active, &.active:focus, &.active:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #01FBFC;
+    border: none;
+    box-shadow: none;
+  }
+  &:focus, &:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    box-shadow: none;
+  }
+}

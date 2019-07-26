@@ -1,0 +1,24 @@
+/******** 滚动条样式 ********/
+* {
+  outline: none;
+  box-sizing: border-box;
+  &::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  &::-webkit-scrollbar-button {
+    display: none;
+  }
+
+  &::-webkit-scrollbar-track {
+    border-radius: 3px;
+    background-color: #0c4a85;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    background-color: #1cb1ff;
+  }
+}
+

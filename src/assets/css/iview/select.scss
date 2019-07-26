@@ -1,0 +1,122 @@
+/******** 条件选择器 ********/
+.app-select-condition {
+  .ivu-select-selection {
+    width: 100%;
+    background: rgba(7, 46, 89, 0.52);
+    border: 1px solid rgba(0, 255, 255, 0.3);
+    border-radius: 0;
+    height: 34px;
+    .ivu-select-placeholder {
+      color: rgba(255, 255, 255, .5);
+      font-size: 14px;
+      height: 34px;
+      line-height: 32px;
+    }
+    .ivu-select-selected-value {
+      color: #ffffff;
+      font-size: 14px;
+      height: 34px;
+      line-height: 32px;
+    }
+    .ivu-select-arrow {
+      font-size: 24px;
+      color: rgba(255, 255, 255, .8);
+      &:before {
+        content: '\F33D';
+      }
+      &.ivu-icon-ios-close-circle {
+        font-size: 20px;
+        &:before {
+          content: '\F378';
+        }
+        &:hover {
+          color: #ffffff;
+        }
+      }
+    }
+  }
+  &.ivu-select-visible .ivu-select-selection {
+    border: 1px solid #00ffff;
+    box-shadow: none;
+  }
+  .ivu-select-dropdown {
+    background: #176eb7;
+    border-radius: 0;
+    margin: 3px 0;
+    min-width: 98px;
+    top: auto !important;
+    width: auto !important;
+    .ivu-select-item {
+      color: #78d4ff;
+      font-size: 14px!important;
+      padding: 6px 10px;
+      text-align: left;
+      &:hover {
+        background: #1479c0;
+      }
+    }
+    .ivu-select-item-focus {
+      color: #78d4ff;
+      background: #176eb7;
+    }
+    .ivu-select-item-selected, .ivu-select-item-selected:hover {
+      color: #fff;
+      background: rgba(45, 140, 240, .9);
+    }
+    .ivu-select-not-found {
+      font-size: 14px!important;
+      text-align: left;
+      padding: 6px 10px;
+    }
+  }
+  &.ivu-select-multiple {
+    .ivu-select-selection {
+      padding: 0 30px 0 4px;
+      > div {
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+      }
+    }
+    .ivu-tag {
+      flex: none;
+      background: rgba(32, 102, 179, 0.9);
+      border: 1px solid #008afc;
+      margin: 4px 4px 4px 0;
+      border-radius: 2px;
+      span:not(.ivu-select-max-tag) {
+        margin-right: 16px;
+      }
+      .ivu-tag-text {
+        color: #e4e4e4;
+      }
+      .ivu-icon {
+        color: #ffffff;
+        font-size: 16px;
+        font-weight: bold;
+        top: 3px;
+      }
+    }
+    .ivu-select-item {
+      padding-left: 30px;
+      &::before {
+        content: "";
+        display: block;
+        border-color: #cdcdcd;
+        background-color: #ffffff;
+        width: 16px;
+        height: 16px;
+        border-radius: 2px;
+        position: absolute;
+        left: 7px;
+        top: 7.5px;
+      }
+      &::after {
+        left: 4px;
+        top: 4px;
+        right: initial;
+        color: #10305e;
+      }
+    }
+  }
+}

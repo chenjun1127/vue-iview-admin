@@ -1,0 +1,79 @@
+/******** 普通表格 ********/
+.app-table-normal {
+  height: 100%;
+  border: 1px solid #125f9d;
+  border-bottom: 0;
+  border-right: 0;
+  .ivu-table {
+    height: 100%;
+    width: 100%;
+    background: transparent;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    &:before, &:after {
+      background: #125f9d;
+    }
+    .ivu-table-header {
+      flex-shrink: 0;
+    }
+    .ivu-table-body {
+      flex: 1;
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+  }
+  table {
+    font-size: 14px;
+    color: #ffffff;
+    tr {
+      th {
+        height: auto;
+        padding: 0;
+        color: rgba(255, 255, 255, .4);
+        background: rgba(9, 28, 79, 0.38);
+        border-bottom: 1px solid #125F9D;
+        border-right: 1px solid #125F9D;
+        height: 54px;
+        overflow: visible;
+        .ivu-table-cell {
+          padding: 0;
+          margin: 0 10px;
+          line-height: 18px;
+          position: relative;
+          overflow: visible;
+        }
+      }
+      td {
+        height: auto;
+        padding: 0;
+        background: transparent;
+        border-bottom: 1px solid #125F9D;
+        border-right: 1px solid #125F9D;
+        color: #ffffff;
+        height: 54px;
+        .ivu-table-cell {
+          padding: 0;
+          margin: 0 10px;
+          line-height: 16px;
+        }
+      }
+      &:hover {
+        background: rgba(0, 174, 255, 0.38);
+        box-shadow: 0 0 12px 6px rgba(5, 36, 73, 0.38);
+      }
+      &:nth-child(odd) td {
+        background: transparent;
+      }
+      &:nth-child(even) td {
+        background: rgba(9, 28, 79, 0.38);
+      }
+      &:nth-child(even):hover td {
+        background: transparent;
+      }
+    }
+    .ivu-table-cell-tooltip {
+      display: inline-flex;
+    }
+  }
+}

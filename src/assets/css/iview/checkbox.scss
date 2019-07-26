@@ -1,0 +1,23 @@
+/********** 普通多选框 **********/
+.app-checkbox-normal {
+	color: #ffffff;
+	font-size: 14px;
+	.ivu-checkbox .ivu-checkbox-inner {
+		width: 18px;
+		height: 18px;
+		background: #c7c7c7;
+		border: 1px solid #ffffff;
+		margin-right: 3px;
+		border-radius: 2px;
+	}
+	.ivu-checkbox-checked .ivu-checkbox-inner {
+		border: 1px solid #ffffff;
+		&:after {
+			border-color: #091B4D;
+			width: 6px;
+			height: 10px;
+			top: 2px;
+			left: 5px;
+		}
+	}
+}

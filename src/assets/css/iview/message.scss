@@ -1,0 +1,28 @@
+.ivu-message {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .ivu-message-notice-content {
+    background: rgba(0, 0, 0, 0.38);
+    color: #fff;
+    max-width: 60vw;
+    .ivu-message-notice-content-text {
+      .ivu-message-custom-content {
+        text-align: left;
+      }
+      span {
+        word-wrap:break-word;
+        word-break:break-all;
+      }
+    }
+  }
+
+  .ivu-icon {
+    display: none;
+  }
+}

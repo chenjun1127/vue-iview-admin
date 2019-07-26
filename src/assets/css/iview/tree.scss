@@ -1,0 +1,163 @@
+/******** 模块树形控件 ********/
+.app-tree-module {
+  &.ivu-tree ul {
+    font-size: 14px;
+    li {
+      margin: 12px 0;
+      .ivu-tree-arrow {
+      	width: 20px;
+        i {
+        	font-size: 24px;
+        }
+      	.ivu-icon-ios-arrow-forward:before {
+      		content: '\F341';
+      	}
+      }
+      .ivu-tree-title {
+        color: #ffffff;
+        padding: 2px 4px;
+        &:hover, &.ivu-tree-title-selected, &.ivu-tree-title-selected:hover {
+        	background: transparent;
+        	color: #01FBFC;
+        }
+      }
+    }
+  }
+}
+
+/******** 表单树形控件 ********/
+.app-tree-form {
+  color: #fff;
+  line-height: initial;
+  .ivu-tree-empty {
+    color: #fff;
+  }
+
+  .ivu-tree-children {
+
+    li {
+      position: relative;
+      text-align: left;
+
+      .ivu-tree-arrow {
+        margin-right: 20px;
+
+        &::before {
+          content: "";
+          display: block;
+          width: 1px;
+          height: calc(100% + 15px);
+          position: absolute;
+          left: 9px;
+          top: 2px;
+          z-index: -1;
+          border-left: 1px dashed #00b5f9;
+        }
+
+        &::after {
+          content: "";
+          display: block;
+          width: 25px;
+          height: 1px;
+          position: absolute;
+          left: 9px;
+          top: 9px;
+          z-index: -1;
+          border-top: 1px dashed #00b5f9;
+        }
+
+        i {
+          background-color: #065786;
+          border-radius: 2px;
+          border: solid 1px #00b5f9;
+          width: 20px;
+          height: 20px;
+          line-height: 13px;
+          text-align: center;
+          z-index: 1;
+
+          &::before {
+            content: '+';
+            font-size: 22px;
+          }
+        }
+
+        &.ivu-tree-arrow-open {
+          i {
+            transform: none;
+
+            &::before {
+              content: '-';
+            }
+          }
+        }
+      }
+
+      .ivu-checkbox-wrapper {
+        vertical-align: top;
+
+        .ivu-checkbox-inner {
+          border-color: #ffffff;
+          background-color: #cdcdcd;
+
+          &::after {
+            border-color: #091b4d;
+          }
+        }
+
+        .ivu-checkbox-checked,
+        .ivu-checkbox-indeterminate {
+          .ivu-checkbox-inner {
+            border-color: #ffffff;
+            background-color: #cdcdcd;
+          }
+        }
+
+        .ivu-checkbox-disabled {
+          .ivu-checkbox-inner {
+            border-color: #afafaf;
+            background-color: #afafaf;
+          }
+        }
+      }
+
+      .ivu-tree-title {
+        display: inline-block;
+        height: 22px;
+        color: #fff;
+
+        &.ivu-tree-title-selected {
+          background: none;
+        }
+
+        &:hover {
+          background: #00b5f9;
+        }
+      }
+
+      .ivu-tree-children {
+        padding-left: 38px;
+
+        >li {
+          >.ivu-tree-arrow {
+            &::before {
+              height: calc(100% + 25px);
+              top: -10px;
+            }
+          }
+        }
+      }
+    }
+
+    &:last-child {
+      >li {
+        >.ivu-tree-arrow {
+          &::before {
+            content: none;
+          }
+        }
+      }
+    }
+  }
+}
+
