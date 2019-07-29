@@ -5,7 +5,7 @@
       <span>{{ parentItem.title }}</span>
     </template>
     <template v-for="item in parentItem.children">
-      <sideMenuItem v-if="item.children&&item.children.length!==0" :parent-item="item" :key="'menu-'+item.name"></sideMenuItem>
+      <SideMenuItem v-if="item.children&&item.children.length!==0" :parent-item="item" :key="'menu-'+item.name"></SideMenuItem>
       <MenuItem v-else :name="item.name" :key="'menu-'+item.name">
         <Icon :type="item.icon" :size="15" v-if="item.icon" />
         <span>{{ item.title }}</span>

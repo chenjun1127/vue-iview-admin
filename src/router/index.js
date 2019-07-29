@@ -9,24 +9,27 @@ import { filterPermission } from '@/libs/utils';
 const router = new Router({
   routes: routes
 });
+const LOGIN_PAGE_NAME = 'login';
 // 使用 router.beforeEach 注册一个全局前置守卫，判断用户是否登陆
 router.beforeEach((to, from, next) => {
-  console.log('to', to.meta);
+  // console.log('to', to.meta);
   iView.LoadingBar.start();
-  if (to.path === '/login') {
-    next();
+  let token = Cookies.get('auth-token');
+  if (!token && to.name !== LOGIN_PAGE_NAME) {
+    // 未登录且要跳转的页面不是登录页
+    next({ name: LOGIN_PAGE_NAME });
+  } else if (!token && to.name === LOGIN_PAGE_NAME) {
+    // 未登陆且要跳转的页面是登录页
+    next(); // 跳转
+  } else if (token && to.name === LOGIN_PAGE_NAME) {
+    // 已登录且要跳转的页面是登录页
+    next('/dashboard');
   } else {
-    let token = Cookies.get('auth-token');
-    if (!token) {
-      next('/login');
+    const users = store.state.users;
+    if (filterPermission(to.meta.permission, users.roleType)) {
+      next();
     } else {
-      console.log('登录了，有token', store);
-      const users = store.state.users;
-      if (filterPermission(to.meta.permission, users.roleType)) {
-        next();
-      } else {
-        next('/error/401');
-      }
+      next('/error/403');
     }
   }
 });

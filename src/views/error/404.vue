@@ -4,8 +4,8 @@
       <img :src="src" alt="404" />
     </i-col>
     <i-col span="12" class="error-box">
-      <h1>403</h1>
-      <h2>Sorry! 你没有权限访问该页面！</h2>
+      <h1>404</h1>
+      <h2>Sorry! 你访问的页面不存在！</h2>
       <Button type="primary" shape="circle" size="large" @click="goBack">返回首页</Button>
     </i-col>
   </Row>

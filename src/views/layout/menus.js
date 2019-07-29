@@ -36,7 +36,7 @@ const menus = [
         path: '/table/basic-table'
       },
       {
-        name: 'customizeTable',
+        name: 'customize-table',
         title: '自定义表格',
         icon: '',
         path: '/table/customize-table'
@@ -88,7 +88,7 @@ const menus = [
     ]
   },
   {
-    name: 'multiLevel',
+    name: 'multi-level',
     title: '多级菜单',
     icon: 'md-menu',
     children: [

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Menu v-show="!collapsed" width="auto" :active-name="activeName" :open-names="openNames" @on-select="handleSelect" theme="dark">
+    <Menu ref="side_menu" v-show="!collapsed" width="auto" :active-name="activeName" :open-names="openNames" @on-select="handleSelect" theme="dark">
       <template v-for="item in menuList">
         <SideMenuItem v-if="item.children && item.children.length!==0" :parent-item="item" :key="'menu-'+item.name"></SideMenuItem>
         <MenuItem v-else :name="item.name" :key="'menu-'+item.name">
@@ -30,27 +30,43 @@ export default {
   name: 'SideMenu',
   components: { SideMenuItem, CollapsedMenu },
   props: {
-    activeName: {
-      type: String,
-      default: 'dashboard'
-    },
-    openNames: {
-      type: Array,
-      default: () => [
-        'table',
-        'control'
-
-      ]
-    },
     collapsed: {
       type: Boolean,
     },
     menuList: {
       type: Array
     },
+  },
+  data() {
+    return {
+      activeName: '',
+      openNames: [],
+    }
+  },
+  created() {
+    // console.log(this.$route);
+    this.getActiveAndOpen(this.$route.name, this.$route.path);
 
   },
+  watch: {
+    // 监控路由
+    $route(to, from) {
+      this.getActiveAndOpen(to.name, to.path);
+    }
+  },
   methods: {
+    getActiveAndOpen(name, path) {
+      this.activeName = name;
+      if (path.split('/').length === 4) {
+        this.openNames = [path.split('/')[1], path.split('/')[2]];
+      } else {
+        this.openNames = [path.split('/')[1]];
+      }
+      this.$nextTick(() => {
+        this.$refs.side_menu.updateOpened();
+        this.$refs.side_menu.updateActiveName()
+      })
+    },
     handleSelect(name) {
       // console.log(name, this.menuList)
       let currentPath = this.getPath(name, this.menuList);
