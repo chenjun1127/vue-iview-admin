@@ -46,24 +46,31 @@ export default {
 }
 </script>
 
-<style lang="css">
+<style lang="scss">
 .ivu-dropdown,
 .ivu-tooltip {
-  width: 100%;
-
+  min-width: 100%;
+  .ivu-tooltip-rel {
+    width: 100%;
+  }
 }
+
 .ivu-dropdown-rel,
 .ivu-tooltip-rel {
   width: 100%;
   display: flex;
   align-items: center;
-
 }
 .ivu-select-dropdown {
   width: auto;
 }
 .ivu-dropdown-item {
   padding: 10px 15px;
+  a {
+    color: #495060;
+    display: inline-block;
+    width: 100%;
+  }
 }
 
 a.drop-menu-a {
@@ -76,6 +83,5 @@ a.drop-menu-a {
   display: flex;
   justify-content: center;
   align-items: center;
-
 }
 </style>

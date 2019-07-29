@@ -7,12 +7,13 @@ export default new Vuex.Store({
   state: {
     users: localStorage.getItem('userInfo') ? JSON.parse(localStorage.getItem('userInfo')) : '',
     time: new Date().getTime(),
-    token: Cookies.get('auth-token') || ''
+    token: Cookies.get('auth-token') || '',
+    tags:''// 标签及面包屑
   },
   getters: {
     users(state) {
       return state.users;
-    }
+    },
   },
   mutations: {
     setUsers(state, payload) {
@@ -20,6 +21,9 @@ export default new Vuex.Store({
     },
     setToken(state, token) {
       state.token = token;
+    },
+    setTags(state, tags){
+      state.tags = tags;
     }
   },
   actions: {

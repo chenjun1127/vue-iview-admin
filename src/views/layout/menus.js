@@ -36,7 +36,7 @@ const menus = [
         path: '/table/basic-table'
       },
       {
-        name: 'customize-table',
+        name: 'customizeTable',
         title: '自定义表格',
         icon: '',
         path: '/table/customize-table'

@@ -1,5 +1,6 @@
 <template>
-  <div>
+  <div class="app-side-menu">
+    <div class="logo">Logo</div>
     <Menu ref="side_menu" v-show="!collapsed" width="auto" :active-name="activeName" :open-names="openNames" @on-select="handleSelect" theme="dark">
       <template v-for="item in menuList">
         <SideMenuItem v-if="item.children && item.children.length!==0" :parent-item="item" :key="'menu-'+item.name"></SideMenuItem>
@@ -22,10 +23,10 @@
   </div>
 </template>
 
-
 <script>
 import SideMenuItem from './SideMenuItem'
 import CollapsedMenu from './CollapsedMenu'
+import { mapMutations } from 'vuex'
 export default {
   name: 'SideMenu',
   components: { SideMenuItem, CollapsedMenu },
@@ -46,15 +47,17 @@ export default {
   created() {
     // console.log(this.$route);
     this.getActiveAndOpen(this.$route.name, this.$route.path);
-
+    this.handleSelect(this.$route.name);
   },
   watch: {
     // 监控路由
     $route(to, from) {
       this.getActiveAndOpen(to.name, to.path);
+      this.handleSelect(to.name);
     }
   },
   methods: {
+    ...mapMutations(['setTags']),
     getActiveAndOpen(name, path) {
       this.activeName = name;
       if (path.split('/').length === 4) {
@@ -70,8 +73,8 @@ export default {
     handleSelect(name) {
       // console.log(name, this.menuList)
       let currentPath = this.getPath(name, this.menuList);
-      console.log(currentPath)
       this.$router.push(currentPath.path);
+      this.setTags(currentPath);
     },
     getPath(name, menus) {
       let arr;
@@ -103,13 +106,20 @@ export default {
       return arr;
     }
   }
-
 }
 
 
 </script>
-
 <style lang="scss" scoped>
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  padding: 10px 0;
+  font-size: 28px;
+  background: #002140;
+}
 .i {
   width: 21px;
   height: 21px;
