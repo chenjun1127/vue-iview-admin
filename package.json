@@ -1,6 +1,6 @@
 {
   "name": "vue-iview-admin",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -16,6 +16,7 @@
     "vuex": "^3.1.1"
   },
   "devDependencies": {
+    "@babel/plugin-transform-spread": "^7.2.2",
     "@vue/cli-plugin-babel": "^3.9.0",
     "@vue/cli-plugin-eslint": "^3.9.0",
     "@vue/cli-service": "^3.9.0",
@@ -44,7 +45,12 @@
       "no-debugger": "off",
       "no-unused-vars": "off",
       "no-irregular-whitespace": 0,
-      "vue/no-parsing-error": [2, { "x-invalid-end-tag": false }]
+      "vue/no-parsing-error": [
+        2,
+        {
+          "x-invalid-end-tag": false
+        }
+      ]
     },
     "parserOptions": {
       "parser": "babel-eslint"

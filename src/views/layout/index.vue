@@ -10,9 +10,11 @@
           <div class="layout-top-bar">
             <div class="top-title">XX后台管理系统</div>
             <FullScreen></FullScreen>
+            <div class="user-name">{{ $store.state.users.name }}</div>
             <User></User>
           </div>
         </Header>
+        <Tags />
         <Content class="layout-container">
           <transition-group name="fade" mode="out-in">
             <BreadCrumb key="bread-crumb"></BreadCrumb>
@@ -28,23 +30,24 @@ import SideMenu from './SideMenu';
 import FullScreen from '@/components/FullScreen';
 import BreadCrumb from './BreadCrumb';
 import User from './User';
-import menus from './menus'
+import menus from './menus';
+import Tags from './Tags';
 export default {
-  components: { SideMenu, User, FullScreen, BreadCrumb },
+  components: { SideMenu, User, FullScreen, BreadCrumb, Tags },
   data() {
     return {
       collapsed: false,
       menus
-    }
+    };
   },
   methods: {
     collapsedSider() {
       this.$refs.sider.toggleCollapse();
     }
   }
-}
+};
 </script>
-<style scoped lang="scss" >
+<style scoped lang="scss">
 .layout {
   border: 1px solid #d7dde4;
   background: #f5f7f9;
@@ -125,6 +128,9 @@ export default {
   .top-title {
     flex: 1;
     font-size: 20px;
+  }
+  .user-name {
+    padding-right: 15px;
   }
 }
 .fade-enter-active,

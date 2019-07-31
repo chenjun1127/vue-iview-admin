@@ -3,8 +3,8 @@
     <div class="logo">Logo</div>
     <Menu ref="side_menu" v-show="!collapsed" width="auto" :active-name="activeName" :open-names="openNames" @on-select="handleSelect" theme="dark">
       <template v-for="item in menuList">
-        <SideMenuItem v-if="item.children && item.children.length!==0" :parent-item="item" :key="'menu-'+item.name"></SideMenuItem>
-        <MenuItem v-else :name="item.name" :key="'menu-'+item.name">
+        <SideMenuItem v-if="item.children && item.children.length !== 0" :parent-item="item" :key="'menu-' + item.name"></SideMenuItem>
+        <MenuItem v-else :name="item.name" :key="'menu-' + item.name">
           <Icon :type="item.icon" :size="15" />
           <span>{{ item.title }}</span>
         </MenuItem>
@@ -14,7 +14,7 @@
       <template v-for="item in menuList">
         <CollapsedMenu v-if="item.children && item.children.length !== 0" @on-click="handleSelect" hideTitle theme="dark" :parent-item="item" :key="`drop-menu-${item.name}`"></CollapsedMenu>
         <Tooltip transfer v-else :content="item.title" placement="right" :key="`drop-menu-${item.name}`">
-          <a class="drop-menu-a" :style="{textAlign: 'center'}" @click="handleSelect(item.name)">
+          <a class="drop-menu-a" :style="{ textAlign: 'center' }" @click="handleSelect(item.name)">
             <Icon size="20" color="#fff" :type="item.icon || (item.children && item.children[0].icon)" />
           </a>
         </Tooltip>
@@ -24,25 +24,25 @@
 </template>
 
 <script>
-import SideMenuItem from './SideMenuItem'
-import CollapsedMenu from './CollapsedMenu'
-import { mapMutations } from 'vuex'
+import SideMenuItem from './SideMenuItem';
+import CollapsedMenu from './CollapsedMenu';
+import { mapMutations } from 'vuex';
 export default {
   name: 'SideMenu',
   components: { SideMenuItem, CollapsedMenu },
   props: {
     collapsed: {
-      type: Boolean,
+      type: Boolean
     },
     menuList: {
       type: Array
-    },
+    }
   },
   data() {
     return {
       activeName: '',
-      openNames: [],
-    }
+      openNames: []
+    };
   },
   created() {
     // console.log(this.$route);
@@ -50,14 +50,14 @@ export default {
     this.handleSelect(this.$route.name);
   },
   watch: {
-    // 监控路由
+    // 监听路由
     $route(to, from) {
       this.getActiveAndOpen(to.name, to.path);
       this.handleSelect(to.name);
     }
   },
   methods: {
-    ...mapMutations(['setTags']),
+    ...mapMutations(['setBreadcrumb', 'addTags']),
     getActiveAndOpen(name, path) {
       this.activeName = name;
       if (path.split('/').length === 4) {
@@ -67,14 +67,16 @@ export default {
       }
       this.$nextTick(() => {
         this.$refs.side_menu.updateOpened();
-        this.$refs.side_menu.updateActiveName()
-      })
+        this.$refs.side_menu.updateActiveName();
+      });
     },
     handleSelect(name) {
-      // console.log(name, this.menuList)
       let currentPath = this.getPath(name, this.menuList);
       this.$router.push(currentPath.path);
-      this.setTags(currentPath);
+      if (name === '404') return;
+      this.setBreadcrumb(currentPath);
+      // 存入到标签页
+      this.addTags(currentPath);
     },
     getPath(name, menus) {
       let arr;
@@ -82,8 +84,8 @@ export default {
         if (menus[i].children) {
           for (let j = 0; j < menus[i].children.length; j++) {
             if (name === menus[i].children[j].name) {
-              let obj = menus[i].children[j]
-              obj.parent = [menus[i]]
+              let obj = menus[i].children[j];
+              obj.parent = [menus[i]];
               arr = obj;
             } else {
               if (menus[i].children[j].children) {
@@ -99,16 +101,14 @@ export default {
           }
         } else {
           if (name === menus[i].name) {
-            arr = (menus[i])
+            arr = menus[i];
           }
         }
       }
       return arr;
     }
   }
-}
-
-
+};
 </script>
 <style lang="scss" scoped>
 .logo {

@@ -1,7 +1,7 @@
 <template>
   <div v-if="showFullScreenBtn" class="full-screen-btn-con">
     <Tooltip :content="fullscreen ? '退出全屏' : '全屏'" placement="bottom">
-      <Icon @click.native="handleFullScreen" :type="fullscreen ? 'md-contract' : 'md-expand'" :size="20" color="#6f6f6f"></Icon>
+      <Icon @click.native="handleFullScreen" style="margin-top: -4px" :type="fullscreen ? 'md-contract' : 'md-expand'" :size="20" color="#6f6f6f"></Icon>
     </Tooltip>
   </div>
 </template>

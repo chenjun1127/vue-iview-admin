@@ -106,7 +106,7 @@ const routes = [
         path: 'level-2-2/level-2-2-1',
         name: 'level-2-2-1',
         component: () => import('@/views/multiLevel/level_2_2_1'),
-        meta: { title: 'level-2-2-1'}
+        meta: { title: 'level-2-2-1',permission: 1 }
       }
     ]
   },

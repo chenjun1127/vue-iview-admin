@@ -53,6 +53,7 @@ const menus = [
         title: '路由拦截',
         icon: '',
         path: '/permission/intercept',
+        permission: 1
       },
       {
         name: 'toggle',
@@ -107,7 +108,8 @@ const menus = [
             name: 'level-2-2-1',
             title: 'Level-2-2-1',
             icon: '',
-            path: '/multi-level/level-2-2/level-2-2-1'
+            path: '/multi-level/level-2-2/level-2-2-1',
+            permission: 1
           }
         ]
       }

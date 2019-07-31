@@ -1,7 +1,7 @@
 <template>
   <ul class="app-breadcrumb">
-    <template v-if="tags.parent && tags.parent.length>0">
-      <template v-for="item in tags.parent">
+    <template v-if="breadcrumb.parent && breadcrumb.parent.length>0">
+      <template v-for="item in breadcrumb.parent">
         <li :key="item.path">
           <template>
             <Icon v-if="item.icon" :type="item.icon"></Icon>
@@ -12,9 +12,9 @@
       </template>
     </template>
     <li>
-      <router-link :to="{ path: `${tags.path}`}">
-        <Icon v-if="tags.icon" :type="tags.icon"></Icon>
-        {{tags.title}}
+      <router-link :to="{ path: `${breadcrumb.path}`}">
+        <Icon v-if="breadcrumb.icon" :type="breadcrumb.icon"></Icon>
+        {{breadcrumb.title}}
         <span>/</span>
       </router-link>
     </li>
@@ -25,13 +25,13 @@ export default {
   name: 'BreadCrumb',
   data() {
     return {
-      tags: this.$store.state.tags
+      breadcrumb: this.$store.state.breadcrumb
     }
   },
   watch: {
     // 监控路由
     $route(to, from) {
-      this.tags = this.$store.state.tags
+      this.breadcrumb = this.$store.state.breadcrumb
     }
   }
 }
